@@ -1,0 +1,1170 @@
+\hypertarget{fonctions125_8c}{}\section{fonctions125.\+c File Reference}
+\label{fonctions125_8c}\index{fonctions125.\+c@{fonctions125.\+c}}
+
+
+declaring all the function and structure we will use in our game  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$S\+D\+L/\+S\+D\+L.\+h$>$}\newline
+{\ttfamily \#include $<$S\+D\+L/\+S\+D\+L\+\_\+image.\+h$>$}\newline
+{\ttfamily \#include $<$S\+D\+L/\+S\+D\+L\+\_\+ttf.\+h$>$}\newline
+{\ttfamily \#include $<$S\+D\+L/\+S\+D\+L\+\_\+mixer.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}fonctions.\+h\char`\"{}}\newline
+Include dependency graph for fonctions125.\+c\+:
+% FIG 0
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{fonctions125_8c_a0a3c7e79c0c65e5c1d33b3fdf422d6a7}{first\+\_\+stage} (S\+D\+L\+\_\+\+Surface $\ast$stage1)
+\item 
+void \hyperlink{fonctions125_8c_ad4af8647a3cc3d41644a42f3ad20f3ca}{display\+\_\+about} (S\+D\+L\+\_\+\+Surface $\ast$about\+\_\+submenu)
+\begin{DoxyCompactList}\small\item\em cette fonction permet la l\textquotesingle{}affichage du sous menu about \end{DoxyCompactList}\item 
+void \hyperlink{fonctions125_8c_a7e21caa262c8ebcbc43892edbb54a3e7}{display\+\_\+settings} (S\+D\+L\+\_\+\+Surface $\ast$settings)
+\begin{DoxyCompactList}\small\item\em this fonction display settings submenu \end{DoxyCompactList}\item 
+void \hyperlink{fonctions125_8c_a685ba5727bdf166024b6724e4d1db653}{menu} (S\+D\+L\+\_\+\+Surface $\ast$screen)
+\begin{DoxyCompactList}\small\item\em this function allows you to display main menu whit all the submenu \end{DoxyCompactList}\item 
+void \hyperlink{fonctions125_8c_a9c31a0102928b6d04b2a3e7ec8be78bb}{main\+\_\+menu} (S\+D\+L\+\_\+\+Surface $\ast$screen2)
+\begin{DoxyCompactList}\small\item\em this function allow to come back to main menu anywhere you are in the game \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+declaring all the function and structure we will use in our game 
+
+the next functions display menu, submenu and firstage
+
+\begin{DoxyAuthor}{Author}
+the hunt teams(\href{mailto:ngueemmanuel.prof@gmail.com}{\tt ngueemmanuel.\+prof@gmail.\+com}) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2020-\/02-\/29
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2020 
+\end{DoxyCopyright}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{fonctions125_8c_ad4af8647a3cc3d41644a42f3ad20f3ca}\label{fonctions125_8c_ad4af8647a3cc3d41644a42f3ad20f3ca}} 
+\index{fonctions125.\+c@{fonctions125.\+c}!display\+\_\+about@{display\+\_\+about}}
+\index{display\+\_\+about@{display\+\_\+about}!fonctions125.\+c@{fonctions125.\+c}}
+\subsubsection{\texorpdfstring{display\+\_\+about()}{display\_about()}}
+{\footnotesize\ttfamily void display\+\_\+about (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+Surface $\ast$}]{about\+\_\+submenu }\end{DoxyParamCaption})}
+
+
+
+cette fonction permet la l\textquotesingle{}affichage du sous menu about 
+
+
+\begin{DoxyParams}{Parameters}
+{\em about\+\_\+submenu} & \\
+\hline
+\end{DoxyParams}
+je charge toute les images qui interviendrons dans le sous menu about dans le tableau menu\+\_\+itens
+
+per de charger la police roboto-\/regular
+
+initialisation du texte
+
+Definition at line 126 of file fonctions125.\+c.
+
+
+\begin{DoxyCode}
+127 \{
+128     \textcolor{keywordflow}{if} (Mix\_OpenAudio(44100, MIX\_DEFAULT\_FORMAT, MIX\_DEFAULT\_CHANNELS, 1024) == -1)
+129     \{
+130         printf(\textcolor{stringliteral}{"%s"}, Mix\_GetError());
+131         printf(\textcolor{stringliteral}{"error\(\backslash\)n"});
+132     \}
+133     Mix\_Music *bckmusic[3];
+134     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < 3; i++)
+135         bckmusic[i] = NULL;
+136     bckmusic[0] = Mix\_LoadMUS(\textcolor{stringliteral}{"son/kafon.mp3"});
+137     bckmusic[1] = Mix\_LoadMUS(\textcolor{stringliteral}{"son/niska.mp3"});
+138     bckmusic[2] = Mix\_LoadMUS(\textcolor{stringliteral}{"son/kafon.mp3"});
+139 
+140     Mix\_PlayMusic(bckmusic[0], -1);
+141 
+142     SDL\_Surface *menu\_items[6];
+143     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < 6; i++)
+144         menu\_items[i] = NULL;
+149     menu\_items[0] = IMG\_Load(\textcolor{stringliteral}{"fly12/multi-1.png"});
+150     menu\_items[1] = IMG\_Load(\textcolor{stringliteral}{"fly12/load-1.png"});
+151     menu\_items[2] = IMG\_Load(\textcolor{stringliteral}{"fly12/new-game-1.png"});
+152     menu\_items[3] = IMG\_Load(\textcolor{stringliteral}{"fly12/new-game-1.png"});
+153     menu\_items[4] = IMG\_Load(\textcolor{stringliteral}{"fly12/new-game-1.png"});
+154     menu\_items[5] = IMG\_Load(\textcolor{stringliteral}{"fly12/new-game-1.png"});
+155     SDL\_Rect pos[5];
+156 
+157     about\_submenu = SDL\_SetVideoMode(1285, 723, 32, SDL\_HWSURFACE | SDL\_RESIZABLE);
+158     \textcolor{keywordflow}{if} (Mix\_OpenAudio(44100, MIX\_DEFAULT\_FORMAT, MIX\_DEFAULT\_CHANNELS, 1024) == -1)
+159     \{
+160         printf(\textcolor{stringliteral}{"%s"}, Mix\_GetError());
+161         printf(\textcolor{stringliteral}{"error\(\backslash\)n"});
+162     \}
+163     SDL\_WM\_SetCaption(\textcolor{stringliteral}{"Menu"}, NULL);
+164 
+165     SDL\_FillRect(about\_submenu, NULL, SDL\_MapRGBA(about\_submenu->format, 15, 24, 32, 0.92));
+166     SDL\_Flip(about\_submenu);
+167 
+168     SDL\_Surface *text1 = NULL, *txt = NULL;
+169     SDL\_Rect text1\_pos, txt\_pos;
+170     TTF\_Font *fonts, *ft;
+171     \textcolor{keywordtype}{char} phrase[300] = \textcolor{stringliteral}{"DISCOVERY"}, phrse[300] = \textcolor{stringliteral}{"هل تريد أن تعيش حياتك"};
+172     fonts = TTF\_OpenFont(\textcolor{stringliteral}{"font/Roboto-Regular.otf"}, 102); 
+173     ft = TTF\_OpenFont(\textcolor{stringliteral}{"font/arabe.ttf"}, 60);
+174 
+175     SDL\_Color fontBlack = \{242, 242, 242\}, color2 = \{166, 3, 3\};
+176 
+181     text1 = TTF\_RenderText\_Blended(fonts, phrase, fontBlack);
+182     txt = TTF\_RenderText\_Blended(ft, phrse, color2);
+183     text1\_pos.x = about\_submenu->clip\_rect.w / 2 - menu\_items[5]->clip\_rect.w / 2 - 200;
+184     text1\_pos.y = about\_submenu->clip\_rect.h / 2 - menu\_items[5]->clip\_rect.h / 2;
+185     SDL\_BlitSurface(text1, NULL, about\_submenu, &text1\_pos);
+186     SDL\_Flip(about\_submenu);
+187 
+188     txt\_pos.x = about\_submenu->clip\_rect.w / 2 - menu\_items[5]->clip\_rect.w / 2 - 500;
+189     txt\_pos.y = about\_submenu->clip\_rect.h / 2 - menu\_items[5]->clip\_rect.h / 2;
+190 
+191     \textcolor{keywordtype}{int} continuer = 1;
+192     SDL\_Event event;
+193     \textcolor{keywordtype}{int} x, y, count1 = -1, count2 = 3;
+194     \textcolor{keywordflow}{while} (continuer)
+195     \{
+196         SDL\_WaitEvent(&event);
+197         \textcolor{keywordflow}{switch} (event.type)
+198         \{
+199         \textcolor{keywordflow}{case} SDL\_QUIT:
+200             continuer = 0;
+201             \textcolor{keywordflow}{break};
+202         \textcolor{keywordflow}{case} SDL\_MOUSEMOTION:
+203             x = \textcolor{keyword}{event}.motion.x;
+204             y = \textcolor{keyword}{event}.motion.y;
+205             \textcolor{keywordflow}{if} (x >= text1\_pos.x && x <= text1\_pos.x + text1\_pos.w && y >= text1\_pos.y && y <= text1\_pos.y 
+      + text1\_pos.h)
+206             \{
+207                 SDL\_FillRect(about\_submenu, NULL, SDL\_MapRGBA(about\_submenu->format, 15, 24, 32, 0.92));
+208                 SDL\_BlitSurface(txt, NULL, about\_submenu, &txt\_pos);
+209                 SDL\_Flip(about\_submenu);
+210             \}
+211             \textcolor{keywordflow}{break};
+212         \}
+213     \}
+214     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < 5; i++)
+215         SDL\_FreeSurface(menu\_items[i]);
+216     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < 3; i++)
+217         Mix\_FreeMusic(bckmusic[i]);
+218 
+219     SDL\_FreeSurface(about\_submenu);
+220     SDL\_FreeSurface(text1);
+221     SDL\_Flip(about\_submenu);
+222 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{fonctions125_8c_a7e21caa262c8ebcbc43892edbb54a3e7}\label{fonctions125_8c_a7e21caa262c8ebcbc43892edbb54a3e7}} 
+\index{fonctions125.\+c@{fonctions125.\+c}!display\+\_\+settings@{display\+\_\+settings}}
+\index{display\+\_\+settings@{display\+\_\+settings}!fonctions125.\+c@{fonctions125.\+c}}
+\subsubsection{\texorpdfstring{display\+\_\+settings()}{display\_settings()}}
+{\footnotesize\ttfamily void display\+\_\+settings (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+Surface $\ast$}]{settings }\end{DoxyParamCaption})}
+
+
+
+this fonction display settings submenu 
+
+
+\begin{DoxyParams}{Parameters}
+{\em settings} & \\
+\hline
+\end{DoxyParams}
+menu\+\_\+items\mbox{[}2\mbox{]} = I\+M\+G\+\_\+\+Load(\char`\"{}fly12/new-\/game-\/2.\+png\char`\"{});
+
+Construct a new sdl waitevent object that help us to listen user event and active relative result
+
+Definition at line 229 of file fonctions125.\+c.
+
+
+\begin{DoxyCode}
+230 \{
+231 
+232     \textcolor{keywordflow}{if} (Mix\_OpenAudio(44100, MIX\_DEFAULT\_FORMAT, MIX\_DEFAULT\_CHANNELS, 1024) == -1)
+233     \{
+234         printf(\textcolor{stringliteral}{"%s"}, Mix\_GetError());
+235         printf(\textcolor{stringliteral}{"error\(\backslash\)n"});
+236     \}
+237     Mix\_Music *bckmusic[2];
+238     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < 2; i++)
+239         bckmusic[i] = NULL;
+240     bckmusic[0] = Mix\_LoadMUS(\textcolor{stringliteral}{"son/interstellar.mp3"});
+241     bckmusic[1] = Mix\_LoadMUS(\textcolor{stringliteral}{"son/bouton.wav"});
+242 
+243     Mix\_PlayMusic(bckmusic[0], -1);
+244 
+245     SDL\_Surface *menu\_items[8];
+246     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < 8; i++)
+247         menu\_items[i] = NULL;
+248     menu\_items[0] = IMG\_Load(\textcolor{stringliteral}{"fly12/multi-1.png"});
+249     menu\_items[1] = IMG\_Load(\textcolor{stringliteral}{"fly12/load-1.png"});
+251     menu\_items[3] = IMG\_Load(\textcolor{stringliteral}{"fly12/load-2.png"});
+252     menu\_items[4] = IMG\_Load(\textcolor{stringliteral}{"fly12/load-2.png"});
+253     menu\_items[5] = IMG\_Load(\textcolor{stringliteral}{"btn/nom.png"});
+254     menu\_items[6] = IMG\_Load(\textcolor{stringliteral}{"fly12/b3.jpg"});
+255     menu\_items[7] = IMG\_Load(\textcolor{stringliteral}{"fly12/multi-2.png"});
+256     SDL\_Rect pos[5],
+257         settings\_pos;
+258 
+259     settings = SDL\_SetVideoMode(1285, 723, 32, SDL\_HWSURFACE | SDL\_RESIZABLE);
+260     \textcolor{keywordflow}{if} (Mix\_OpenAudio(44100, MIX\_DEFAULT\_FORMAT, MIX\_DEFAULT\_CHANNELS, 1024) == -1)
+261     \{
+262         printf(\textcolor{stringliteral}{"%s"}, Mix\_GetError());
+263         printf(\textcolor{stringliteral}{"error\(\backslash\)n"});
+264     \}
+265     SDL\_WM\_SetCaption(\textcolor{stringliteral}{"Menu"}, NULL);
+266 
+267     settings\_pos.x = 0;
+268     settings\_pos.y = 0;
+269     SDL\_BlitSurface(menu\_items[6], NULL, settings, &settings\_pos);
+270 
+271     \textcolor{comment}{//displaying start btn}
+272     pos[0].x = settings->clip\_rect.w / 2 - menu\_items[0]->clip\_rect.w / 2 + 450;
+273     pos[0].y = settings->clip\_rect.h / 2 - menu\_items[0]->clip\_rect.h / 2 + 100;
+274     SDL\_BlitSurface(menu\_items[0], NULL, settings, &pos[0]);
+275     SDL\_Flip(settings);
+276 
+277     \textcolor{comment}{//displaying  settings btn}
+278     pos[1].x = settings->clip\_rect.w / 2 - menu\_items[1]->clip\_rect.w / 2 + 500;
+279     pos[1].y = settings->clip\_rect.h / 2 - menu\_items[1]->clip\_rect.h / 2 + 200;
+280     SDL\_BlitSurface(menu\_items[1], NULL, settings, &pos[1]);
+281     SDL\_Flip(settings);
+282 
+283     \textcolor{keywordtype}{int} continuer = 1, x, y;
+284     SDL\_Event event;
+285     \textcolor{keywordtype}{int} i = 0, count1 = -1;
+286     Mix\_Chunk *son = NULL;
+287     son = Mix\_LoadWAV(\textcolor{stringliteral}{"son/bouton.wav"});
+288     SDL\_Surface *screen2 = NULL;
+289     \textcolor{keywordflow}{while} (continuer)
+290     \{
+295         SDL\_WaitEvent(&event);
+296         \textcolor{keywordflow}{switch} (event.type)
+297         \{
+298         \textcolor{keywordflow}{case} SDL\_QUIT:
+299             continuer = 0;
+300             \textcolor{keywordflow}{break};
+301         \textcolor{keywordflow}{case} SDL\_KEYDOWN:
+302             SDL\_EnableKeyRepeat(1000, 1000);
+303             \textcolor{keywordflow}{switch} (event.key.keysym.sym)
+304             \{
+305             \textcolor{keywordflow}{case} SDLK\_ESCAPE:
+306                 continuer = 0;
+307                 \textcolor{keywordflow}{break};
+308             \textcolor{keywordflow}{case} SDLK\_DOWN:
+309                 count1++;
+310                 \textcolor{keywordflow}{if} (count1 > 1)
+311                 \{
+312                     count1 = 0;
+313                 \}
+314                 \textcolor{keywordflow}{switch} (count1)
+315                 \{
+316                 \textcolor{keywordflow}{case} 0:
+317                     SDL\_BlitSurface(menu\_items[6], NULL, settings, &settings\_pos);
+318                     Mix\_PlayChannel(1, son, 0);
+319                     SDL\_BlitSurface(menu\_items[7], NULL, settings, &pos[0]);
+320                     SDL\_BlitSurface(menu\_items[1], NULL, settings, &pos[1]);
+321                     SDL\_Flip(settings);
+322                     \textcolor{keywordflow}{break};
+323                 \textcolor{keywordflow}{case} 1:
+324                     SDL\_BlitSurface(menu\_items[6], NULL, settings, &settings\_pos);
+325                     Mix\_PlayChannel(1, son, 0);
+326                     SDL\_BlitSurface(menu\_items[0], NULL, settings, &pos[0]);
+327                     SDL\_BlitSurface(menu\_items[3], NULL, settings, &pos[1]);
+328                     SDL\_Flip(settings);
+329                     \textcolor{keywordflow}{break};
+330                 \}
+331                 \textcolor{keywordflow}{break};
+332             \textcolor{keywordflow}{case} SDLK\_UP:
+333                 count1--;
+334                 \textcolor{keywordflow}{if} (count1 <= -1)
+335                 \{
+336                     count1 = 1;
+337                 \}
+338                 \textcolor{keywordflow}{switch} (count1)
+339                 \{
+340                 \textcolor{keywordflow}{case} 0:
+341                     SDL\_BlitSurface(menu\_items[6], NULL, settings, &settings\_pos);
+342                     Mix\_PlayChannel(1, son, 0);
+343                     SDL\_BlitSurface(menu\_items[7], NULL, settings, &pos[0]);
+344                     SDL\_BlitSurface(menu\_items[1], NULL, settings, &pos[1]);
+345                     SDL\_Flip(settings);
+346                     \textcolor{keywordflow}{break};
+347                 \}
+348                 \textcolor{keywordflow}{break};
+349             \textcolor{keywordflow}{case} 1:
+350                 SDL\_BlitSurface(menu\_items[6], NULL, settings, &settings\_pos);
+351                 Mix\_PlayChannel(1, son, 0);
+352                 SDL\_BlitSurface(menu\_items[0], NULL, settings, &pos[0]);
+353                 SDL\_BlitSurface(menu\_items[3], NULL, settings, &pos[1]);
+354                 SDL\_Flip(settings);
+355                 \textcolor{keywordflow}{break};
+356             \}
+357             \textcolor{keywordflow}{break};
+358         \textcolor{keywordflow}{case} SDL\_MOUSEMOTION:
+359             x = \textcolor{keyword}{event}.motion.x;
+360             y = \textcolor{keyword}{event}.motion.y;
+361             \textcolor{keywordflow}{if} (x >= pos[i].x && x <= pos[i].x + pos[i].w && y >= pos[i].y && y <= pos[i].y + pos[i].h)
+362             \{
+363                 \textcolor{keywordflow}{switch} (i)
+364                 \{
+365                 \textcolor{keywordflow}{case} 0:
+366                     SDL\_BlitSurface(menu\_items[6], NULL, settings, &settings\_pos);
+367                     Mix\_PlayChannel(1, son, 0);
+368                     SDL\_BlitSurface(menu\_items[7], NULL, settings, &pos[0]);
+369                     SDL\_BlitSurface(menu\_items[1], NULL, settings, &pos[1]);
+370                     SDL\_Flip(settings);
+371 
+372                     \textcolor{keywordflow}{break};
+373 
+374                 \textcolor{keywordflow}{case} 1:
+375                     SDL\_BlitSurface(menu\_items[6], NULL, settings, &settings\_pos);
+376                     Mix\_PlayChannel(1, son, 0);
+377                     SDL\_BlitSurface(menu\_items[0], NULL, settings, &pos[0]);
+378                     SDL\_BlitSurface(menu\_items[3], NULL, settings, &pos[1]);
+379                     SDL\_Flip(settings);
+380                     \textcolor{keywordflow}{break};
+381                 \}
+382             \}
+383             \textcolor{keywordtype}{int} \textcolor{keywordtype}{bool} = -1;
+384             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j = 0; j < 4; j++)
+385             \{
+386 
+387                 \textcolor{keywordflow}{if} (x >= pos[j].x && x <= pos[j].x + pos[j].w && y >= pos[j].y && y <= pos[j].y + pos[j].h)
+388                 \{
+389                     \textcolor{keywordtype}{bool} = 1;
+390                 \}
+391             \}
+392             \textcolor{keywordflow}{if} (\textcolor{keywordtype}{bool} == -1)
+393             \{
+394                 SDL\_BlitSurface(menu\_items[6], NULL, settings, &settings\_pos);
+395                 SDL\_BlitSurface(menu\_items[0], NULL, settings, &pos[0]);
+396                 SDL\_BlitSurface(menu\_items[1], NULL, settings, &pos[1]);
+397                 SDL\_BlitSurface(menu\_items[2], NULL, settings, &pos[2]);
+398                 SDL\_Flip(settings);
+399             \}
+400             \textcolor{keywordflow}{if} (i == 1)
+401             \{
+402                 i = -1;
+403             \}
+404             i++;
+405             \textcolor{keywordflow}{break};
+406             x = \textcolor{keyword}{event}.motion.x;
+407             y = \textcolor{keyword}{event}.motion.y;
+408             \textcolor{keywordflow}{if} (event.button.button == SDL\_BUTTON\_LEFT)
+409             \{
+410                 \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < 4; i++)
+411                 \{
+412                     \textcolor{keywordflow}{if} (x >= pos[i].x && x <= pos[i].x + pos[i].w && y >= pos[i].y && y <= pos[i].y + pos[i
+      ].h)
+413                     \{
+414                         \textcolor{keywordflow}{switch} (i)
+415                         \{
+416                         \textcolor{keywordflow}{case} 0:
+417                             \textcolor{comment}{//main\_menu(&menu);}
+418                             \textcolor{comment}{//main\_menu(&screen2);}
+419                             \textcolor{comment}{//first\_stage(&stage1);}
+420                             \textcolor{keywordflow}{break};
+421                         \textcolor{keywordflow}{case} 1:
+422                             \textcolor{comment}{//display\_settings(&settings);}
+423                             \textcolor{keywordflow}{break};
+424                         \}
+425                     \}
+426                 \}
+427             \}
+428             \textcolor{keywordflow}{break};
+429         \}
+430     \}
+431 
+432     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < 8; i++)
+433         SDL\_FreeSurface(menu\_items[i]);
+434     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < 2; i++)
+435         Mix\_FreeMusic(bckmusic[i]);
+436     Mix\_FreeChunk(son);
+437     Mix\_CloseAudio();
+438     SDL\_FreeSurface(settings);
+439     SDL\_Flip(settings);
+440 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{fonctions125_8c_a0a3c7e79c0c65e5c1d33b3fdf422d6a7}\label{fonctions125_8c_a0a3c7e79c0c65e5c1d33b3fdf422d6a7}} 
+\index{fonctions125.\+c@{fonctions125.\+c}!first\+\_\+stage@{first\+\_\+stage}}
+\index{first\+\_\+stage@{first\+\_\+stage}!fonctions125.\+c@{fonctions125.\+c}}
+\subsubsection{\texorpdfstring{first\+\_\+stage()}{first\_stage()}}
+{\footnotesize\ttfamily void first\+\_\+stage (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+Surface $\ast$}]{stage1 }\end{DoxyParamCaption})}
+
+permet l\textquotesingle{}afichage du premier state
+
+load image we will use in the first stage
+
+déplacement du personnage vers la droite
+
+déplacement du personnage vers la gauche
+
+suppression des surface déclarer personnage et background
+
+Definition at line 21 of file fonctions125.\+c.
+
+
+\begin{DoxyCode}
+22 \{ 
+26     \textcolor{keywordflow}{if} (Mix\_OpenAudio(44100, MIX\_DEFAULT\_FORMAT, MIX\_DEFAULT\_CHANNELS, 1024) == -1)
+27     \{
+28         printf(\textcolor{stringliteral}{"%s"}, Mix\_GetError());
+29         printf(\textcolor{stringliteral}{"error\(\backslash\)n"});
+30     \}
+31     Mix\_Music *bckmusic[3];
+32     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < 3; i++)
+33         bckmusic[i] = NULL;
+34     bckmusic[0] = Mix\_LoadMUS(\textcolor{stringliteral}{"son/kafon.mp3"});
+35     bckmusic[1] = Mix\_LoadMUS(\textcolor{stringliteral}{"son/niska.mp3"});
+36     bckmusic[2] = Mix\_LoadMUS(\textcolor{stringliteral}{"son/kafon.mp3"});
+37 
+38     SDL\_Surface *stage1\_items[2];
+39 
+40     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < 2; i++)
+41         stage1\_items[i] = NULL; \textcolor{comment}{//iniatialisation of surface tha we will use}
+46 \textcolor{comment}{}    stage1\_items[0] = IMG\_Load(\textcolor{stringliteral}{"stage1-images/background.png"});
+47     stage1\_items[1] = IMG\_Load(\textcolor{stringliteral}{"stage1-images/detective.png"});
+48 
+49     stage1 = SDL\_SetVideoMode(1285, 723, 32, SDL\_HWSURFACE | SDL\_RESIZABLE);
+50     \textcolor{keywordflow}{if} (Mix\_OpenAudio(44100, MIX\_DEFAULT\_FORMAT, MIX\_DEFAULT\_CHANNELS, 1024) == -1)
+51     \{
+52         printf(\textcolor{stringliteral}{"%s"}, Mix\_GetError());
+53         printf(\textcolor{stringliteral}{"error\(\backslash\)n"});
+54     \}
+55     SDL\_WM\_SetCaption(\textcolor{stringliteral}{"Menu"}, NULL);
+56 
+57     SDL\_Rect pos\_stage1[2];
+58 
+59     \textcolor{comment}{//initiallisation of background, positionate and all the bliting background}
+60     pos\_stage1[0].x = 0;
+61     pos\_stage1[0].y = 0;
+62     SDL\_BlitSurface(stage1\_items[0], NULL, stage1, &pos\_stage1[0]);
+63     SDL\_Flip(stage1);
+64 
+65     \textcolor{comment}{//displaying character}
+66     pos\_stage1[1].x = 0;
+67     pos\_stage1[1].y = 200;
+68     SDL\_BlitSurface(stage1\_items[1], NULL, stage1, &pos\_stage1[1]);
+69     SDL\_Flip(stage1);
+70 
+71     \textcolor{keywordtype}{int} continuer = 1;
+72     SDL\_Event event;
+73     \textcolor{keywordtype}{int} x, y, count1 = -1, count2 = 3;
+74     \textcolor{keywordflow}{while} (continuer)
+75     \{
+76         SDL\_WaitEvent(&event);
+77         \textcolor{keywordflow}{switch} (event.type)
+78         \{
+79         \textcolor{keywordflow}{case} SDL\_QUIT:
+80             continuer = 0;
+81             \textcolor{keywordflow}{break};
+82         \textcolor{keywordflow}{case} SDL\_KEYDOWN:
+83             SDL\_EnableKeyRepeat(1000, 1000);
+84             \textcolor{keywordflow}{switch} (event.key.keysym.sym)
+85             \{
+86             \textcolor{keywordflow}{case} SDLK\_RIGHT:
+91                 pos\_stage1[1].x += 50;
+92                 SDL\_BlitSurface(stage1\_items[0], NULL, stage1, &pos\_stage1[0]);
+93                 SDL\_BlitSurface(stage1\_items[1], NULL, stage1, &pos\_stage1[1]);
+94                 SDL\_Flip(stage1);
+95                 \textcolor{keywordflow}{break};
+96             \textcolor{keywordflow}{case} SDLK\_LEFT:
+101                 pos\_stage1[1].x -= 50;
+102                 SDL\_BlitSurface(stage1\_items[0], NULL, stage1, &pos\_stage1[0]);
+103                 SDL\_BlitSurface(stage1\_items[1], NULL, stage1, &pos\_stage1[1]);
+104                 SDL\_Flip(stage1);
+105                 \textcolor{keywordflow}{break};
+106             \}
+107             \textcolor{keywordflow}{break};
+108         \}
+109     \}
+110 
+111     SDL\_Flip(stage1);
+112     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < 2; i++)
+113         SDL\_FreeSurface(stage1\_items[i]); 
+117     SDL\_FreeSurface(stage1);
+118     printf(\textcolor{stringliteral}{"error\(\backslash\)n"});
+119 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{fonctions125_8c_a9c31a0102928b6d04b2a3e7ec8be78bb}\label{fonctions125_8c_a9c31a0102928b6d04b2a3e7ec8be78bb}} 
+\index{fonctions125.\+c@{fonctions125.\+c}!main\+\_\+menu@{main\+\_\+menu}}
+\index{main\+\_\+menu@{main\+\_\+menu}!fonctions125.\+c@{fonctions125.\+c}}
+\subsubsection{\texorpdfstring{main\+\_\+menu()}{main\_menu()}}
+{\footnotesize\ttfamily void main\+\_\+menu (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+Surface $\ast$}]{screen2 }\end{DoxyParamCaption})}
+
+
+
+this function allow to come back to main menu anywhere you are in the game 
+
+
+\begin{DoxyParams}{Parameters}
+{\em screen2} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 770 of file fonctions125.\+c.
+
+
+\begin{DoxyCode}
+771 \{
+772     \textcolor{keywordtype}{int} i = 0;
+773 
+774     SDL\_Init(SDL\_INIT\_VIDEO | SDL\_INIT\_AUDIO);
+775     TTF\_Init();
+776     \textcolor{comment}{// TTF\_CloseFont();}
+777 
+778     \textcolor{keywordflow}{if} (Mix\_OpenAudio(44100, MIX\_DEFAULT\_FORMAT, MIX\_DEFAULT\_CHANNELS, 1024) == -1)
+779     \{
+780         printf(\textcolor{stringliteral}{"%s"}, Mix\_GetError());
+781         printf(\textcolor{stringliteral}{"error\(\backslash\)n"});
+782     \}
+783     Mix\_Music *bckmusic[3];
+784 
+785     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i <= 3; i++)
+786         bckmusic[i] = NULL;
+787     bckmusic[0] = Mix\_LoadMUS(\textcolor{stringliteral}{"son/interstellar.mp3"});
+788     bckmusic[1] = Mix\_LoadMUS(\textcolor{stringliteral}{"son/bckSon.mp3"});
+789     bckmusic[2] = Mix\_LoadMUS(\textcolor{stringliteral}{"son/kafon.mp3"});
+790     Mix\_Chunk *son = NULL;
+791     son = Mix\_LoadWAV(\textcolor{stringliteral}{"son/bouton.wav"});
+792     Mix\_PlayMusic(bckmusic[0], -1);
+793 
+794     SDL\_Surface *menu\_items[12];
+795     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < 12; i++)
+796         menu\_items[i] = NULL;
+797 
+798     menu\_items[0] = IMG\_Load(\textcolor{stringliteral}{"fly12/new-game-1.png"});
+799     menu\_items[1] = IMG\_Load(\textcolor{stringliteral}{"fly12/setting-1.png"});
+800     menu\_items[2] = IMG\_Load(\textcolor{stringliteral}{"fly12/load-1.png"});
+801     menu\_items[3] = IMG\_Load(\textcolor{stringliteral}{"fly12/quit-1.png"});
+802     menu\_items[4] = IMG\_Load(\textcolor{stringliteral}{"fly12/multi-1.png"});
+803     menu\_items[5] = IMG\_Load(\textcolor{stringliteral}{"btn/nom.png"}); \textcolor{comment}{//fly12/background.png}
+804     menu\_items[6] = IMG\_Load(\textcolor{stringliteral}{"fly12/b3.jpg"});
+805     menu\_items[7] = IMG\_Load(\textcolor{stringliteral}{"fly12/new-game-2.png"});
+806     menu\_items[8] = IMG\_Load(\textcolor{stringliteral}{"fly12/settings-2.png"});
+807     menu\_items[9] = IMG\_Load(\textcolor{stringliteral}{"fly12/load-2.png"});
+808     menu\_items[10] = IMG\_Load(\textcolor{stringliteral}{"buttons/background.jpg"});
+809     menu\_items[11] = IMG\_Load(\textcolor{stringliteral}{"fly12/quit-2.png"});
+810     SDL\_Rect pos[5], screen\_pos, position;
+811 
+812     screen2 = SDL\_SetVideoMode(1285, 723, 32, SDL\_HWSURFACE | SDL\_RESIZABLE);
+813     \textcolor{keywordflow}{if} (Mix\_OpenAudio(44100, MIX\_DEFAULT\_FORMAT, MIX\_DEFAULT\_CHANNELS, 1024) == -1)
+814     \{
+815         printf(\textcolor{stringliteral}{"%s"}, Mix\_GetError());
+816         printf(\textcolor{stringliteral}{"error\(\backslash\)n"});
+817     \}
+818     SDL\_WM\_SetCaption(\textcolor{stringliteral}{"the hunt"}, NULL); \textcolor{comment}{// allow you to name window}
+819     screen\_pos.x = 0;
+820     screen\_pos.y = 0;
+821     SDL\_BlitSurface(menu\_items[6], NULL, screen2, &screen\_pos);
+822     SDL\_Flip(screen2);
+823 
+824     \textcolor{comment}{//displaying start btn}
+825     pos[0].x = screen2->clip\_rect.w / 2 - menu\_items[0]->clip\_rect.w / 2 + 400;
+826     pos[0].y = screen2->clip\_rect.h / 2 - menu\_items[0]->clip\_rect.h / 2 - 100;
+827     SDL\_BlitSurface(menu\_items[0], NULL, screen2, &pos[0]);
+828     SDL\_Flip(screen2);
+829 
+830     \textcolor{comment}{//displaying  settings btn}
+831     pos[1].x = screen2->clip\_rect.w / 2 - menu\_items[1]->clip\_rect.w / 2 + 400;
+832     pos[1].y = screen2->clip\_rect.h / 2 - menu\_items[1]->clip\_rect.h / 2;
+833     SDL\_BlitSurface(menu\_items[1], NULL, screen2, &pos[1]);
+834     SDL\_Flip(screen2);
+835 
+836     \textcolor{comment}{//displaying about btn}
+837     pos[2].x = screen2->clip\_rect.w / 2 - menu\_items[2]->clip\_rect.w / 2 + 400;
+838     pos[2].y = screen2->clip\_rect.h / 2 - menu\_items[2]->clip\_rect.h / 2 + 100;
+839 
+840     SDL\_BlitSurface(menu\_items[2], NULL, screen2, &pos[2]);
+841     SDL\_Flip(screen2);
+842 
+843     \textcolor{comment}{//displaying quit btn}
+844     pos[3].x = screen2->clip\_rect.w / 2 - menu\_items[3]->clip\_rect.w / 2 + 400;
+845     pos[3].y = screen2->clip\_rect.h / 2 - menu\_items[3]->clip\_rect.h / 2 + 200;
+846     SDL\_BlitSurface(menu\_items[3], NULL, screen2, &pos[3]);
+847     SDL\_Flip(screen2);
+848 
+849     SDL\_Flip(screen2);
+850 
+851     \textcolor{keywordtype}{int} continuer = 1;
+852     SDL\_Event event;
+853     Mix\_PlayMusic(bckmusic[0], -1);
+854     \textcolor{keywordtype}{int} x, y, count1 = -1, count2 = 3;
+855     SDL\_Surface settings, stage1, about\_submenu;
+856 
+857     \textcolor{keywordflow}{while} (continuer)
+858     \{
+859         SDL\_WaitEvent(&event);
+860         \textcolor{keywordflow}{switch} (event.type)
+861         \{
+862         \textcolor{keywordflow}{case} SDL\_QUIT:
+863             continuer = 0;
+864             \textcolor{keywordflow}{break};
+865         \textcolor{keywordflow}{case} SDL\_KEYDOWN:
+866             SDL\_EnableKeyRepeat(1000, 1000);
+867             \textcolor{keywordflow}{switch} (event.key.keysym.sym)
+868             \{
+869             \textcolor{keywordflow}{case} SDLK\_ESCAPE:
+870                 continuer = 0;
+871                 \textcolor{keywordflow}{break};
+872             \textcolor{keywordflow}{case} SDLK\_f:
+873                 SDL\_WM\_ToggleFullScreen(screen2);
+874                 \textcolor{keywordflow}{break};
+875             \textcolor{keywordflow}{case} SDLK\_DOWN:
+876                 count1++;
+877                 \textcolor{keywordflow}{if} (count1 > 3)
+878                 \{
+879                     count1 = -1;
+880                 \}
+881                 \textcolor{keywordflow}{switch} (count1)
+882                 \{
+883                 \textcolor{keywordflow}{case} 0:
+884                     SDL\_BlitSurface(menu\_items[6], NULL, screen2, &screen\_pos);
+885                     Mix\_PlayChannel(1, son, 0);
+886                     SDL\_BlitSurface(menu\_items[7], NULL, screen2, &pos[0]);
+887                     SDL\_BlitSurface(menu\_items[1], NULL, screen2, &pos[1]);
+888                     SDL\_BlitSurface(menu\_items[2], NULL, screen2, &pos[2]);
+889                     SDL\_BlitSurface(menu\_items[3], NULL, screen2, &pos[3]);
+890                     SDL\_Flip(screen2);
+891                     \textcolor{keywordflow}{break};
+892                 \textcolor{keywordflow}{case} 1:
+893                     SDL\_BlitSurface(menu\_items[6], NULL, screen2, &screen\_pos);
+894                     Mix\_PlayChannel(1, son, 0);
+895                     SDL\_BlitSurface(menu\_items[0], NULL, screen2, &pos[0]);
+896                     SDL\_BlitSurface(menu\_items[8], NULL, screen2, &pos[1]);
+897                     SDL\_BlitSurface(menu\_items[2], NULL, screen2, &pos[2]);
+898                     SDL\_BlitSurface(menu\_items[3], NULL, screen2, &pos[3]);
+899                     SDL\_Flip(screen2);
+900                     \textcolor{keywordflow}{break};
+901                 \textcolor{keywordflow}{case} 2:
+902                     SDL\_BlitSurface(menu\_items[6], NULL, screen2, &screen\_pos);
+903                     Mix\_PlayChannel(1, son, 0);
+904                     SDL\_BlitSurface(menu\_items[0], NULL, screen2, &pos[0]);
+905                     SDL\_BlitSurface(menu\_items[1], NULL, screen2, &pos[1]);
+906                     SDL\_BlitSurface(menu\_items[9], NULL, screen2, &pos[2]);
+907                     SDL\_BlitSurface(menu\_items[3], NULL, screen2, &pos[3]);
+908                     SDL\_Flip(screen2);
+909                     \textcolor{keywordflow}{break};
+910                 \textcolor{keywordflow}{case} 3:
+911                     SDL\_BlitSurface(menu\_items[6], NULL, screen2, &screen\_pos);
+912                     Mix\_PlayChannel(1, son, 0);
+913                     SDL\_BlitSurface(menu\_items[0], NULL, screen2, &pos[0]);
+914                     SDL\_BlitSurface(menu\_items[1], NULL, screen2, &pos[1]);
+915                     SDL\_BlitSurface(menu\_items[2], NULL, screen2, &pos[2]);
+916                     SDL\_BlitSurface(menu\_items[11], NULL, screen2, &pos[3]);
+917                     SDL\_Flip(screen2);
+918                     \textcolor{keywordflow}{break};
+919                 \}
+920                 \textcolor{keywordflow}{break};
+921             \textcolor{keywordflow}{case} SDLK\_UP:
+922                 count1--;
+923                 \textcolor{keywordflow}{if} (count2 < -1)
+924                 \{
+925                     count2 = -1;
+926                 \}
+927                 \textcolor{comment}{// printf("count1=%d\(\backslash\)n", count2);}
+928                 printf(\textcolor{stringliteral}{"count2=%d\(\backslash\)n"}, count2);
+929                 \textcolor{keywordflow}{switch} (count1)
+930                 \{
+931                 \textcolor{keywordflow}{case} -1:
+932                     SDL\_BlitSurface(menu\_items[6], NULL, screen2, &screen\_pos);
+933                     Mix\_PlayChannel(1, son, 0);
+934                     SDL\_BlitSurface(menu\_items[7], NULL, screen2, &pos[0]);
+935                     SDL\_BlitSurface(menu\_items[1], NULL, screen2, &pos[1]);
+936                     SDL\_BlitSurface(menu\_items[2], NULL, screen2, &pos[2]);
+937                     SDL\_BlitSurface(menu\_items[3], NULL, screen2, &pos[3]);
+938                     SDL\_Flip(screen2);
+939                     \textcolor{keywordflow}{break};
+940                 \textcolor{keywordflow}{case} 1:
+941                     SDL\_BlitSurface(menu\_items[6], NULL, screen2, &screen\_pos);
+942                     Mix\_PlayChannel(1, son, 0);
+943                     SDL\_BlitSurface(menu\_items[0], NULL, screen2, &pos[0]);
+944                     SDL\_BlitSurface(menu\_items[8], NULL, screen2, &pos[1]);
+945                     SDL\_BlitSurface(menu\_items[2], NULL, screen2, &pos[2]);
+946                     SDL\_BlitSurface(menu\_items[3], NULL, screen2, &pos[3]);
+947                     SDL\_Flip(screen2);
+948                     \textcolor{keywordflow}{break};
+949                 \textcolor{keywordflow}{case} 2:
+950                     SDL\_BlitSurface(menu\_items[6], NULL, screen2, &screen\_pos);
+951                     Mix\_PlayChannel(1, son, 0);
+952                     SDL\_BlitSurface(menu\_items[0], NULL, screen2, &pos[0]);
+953                     SDL\_BlitSurface(menu\_items[1], NULL, screen2, &pos[1]);
+954                     SDL\_BlitSurface(menu\_items[9], NULL, screen2, &pos[2]);
+955                     SDL\_BlitSurface(menu\_items[3], NULL, screen2, &pos[3]);
+956                     SDL\_Flip(screen2);
+957                     \textcolor{keywordflow}{break};
+958                 \textcolor{keywordflow}{case} 3:
+959                     SDL\_BlitSurface(menu\_items[6], NULL, screen2, &screen\_pos);
+960                     Mix\_PlayChannel(1, son, 0);
+961                     SDL\_BlitSurface(menu\_items[0], NULL, screen2, &pos[0]);
+962                     SDL\_BlitSurface(menu\_items[1], NULL, screen2, &pos[1]);
+963                     SDL\_BlitSurface(menu\_items[2], NULL, screen2, &pos[2]);
+964                     SDL\_BlitSurface(menu\_items[11], NULL, screen2, &pos[3]);
+965                     SDL\_Flip(screen2);
+966                     \textcolor{keywordflow}{break};
+967                 \}
+968                 \textcolor{keywordflow}{break};
+969             \}
+970             \textcolor{keywordflow}{break};
+971         \textcolor{keywordflow}{case} SDL\_MOUSEBUTTONDOWN:
+972             x = \textcolor{keyword}{event}.motion.x;
+973             y = \textcolor{keyword}{event}.motion.y;
+974             \textcolor{keywordflow}{if} (event.button.button == SDL\_BUTTON\_LEFT)
+975             \{
+976                 \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < 4; i++)
+977                 \{
+978                     \textcolor{keywordflow}{if} (x >= pos[i].x && x <= pos[i].x + pos[i].w && y >= pos[i].y && y <= pos[i].y + pos[i
+      ].h)
+979                     \{
+980                         \textcolor{keywordflow}{switch} (i)
+981                         \{
+982                         \textcolor{keywordflow}{case} 0:
+983                             \hyperlink{fonctions125_8c_a0a3c7e79c0c65e5c1d33b3fdf422d6a7}{first\_stage}(&stage1);
+984                             \textcolor{keywordflow}{break};
+985                         \textcolor{keywordflow}{case} 1:
+986                             \hyperlink{fonctions125_8c_a7e21caa262c8ebcbc43892edbb54a3e7}{display\_settings}(&settings);
+987                             \textcolor{keywordflow}{break};
+988                         \textcolor{keywordflow}{case} 2:
+989                             \hyperlink{fonctions125_8c_ad4af8647a3cc3d41644a42f3ad20f3ca}{display\_about}(&about\_submenu);
+990                             \textcolor{comment}{//settings\_submenu(&about\_submenu);}
+991                             \textcolor{keywordflow}{break};
+992                         \textcolor{keywordflow}{case} 3:
+993                             continuer = 0;
+994                             \textcolor{keywordflow}{break};
+995                         \}
+996                     \}
+997                 \}
+998             \}
+999             \textcolor{keywordflow}{break};
+1000         \textcolor{keywordflow}{case} SDL\_MOUSEMOTION:
+1001             x = \textcolor{keyword}{event}.motion.x;
+1002             y = \textcolor{keyword}{event}.motion.y;
+1003             \textcolor{keywordflow}{if} (x >= pos[i].x && x <= pos[i].x + pos[i].w && y >= pos[i].y && y <= pos[i].y + pos[i].h)
+1004             \{
+1005                 \textcolor{keywordflow}{switch} (i)
+1006                 \{
+1007                 \textcolor{keywordflow}{case} 0:
+1008                     SDL\_BlitSurface(menu\_items[6], NULL, screen2, &screen\_pos);
+1009                     Mix\_PlayChannel(1, son, 0);
+1010                     SDL\_BlitSurface(menu\_items[7], NULL, screen2, &pos[0]);
+1011                     SDL\_BlitSurface(menu\_items[1], NULL, screen2, &pos[1]);
+1012                     SDL\_BlitSurface(menu\_items[2], NULL, screen2, &pos[2]);
+1013                     SDL\_BlitSurface(menu\_items[3], NULL, screen2, &pos[3]);
+1014                     SDL\_Flip(screen2);
+1015                     \textcolor{keywordflow}{break};
+1016 
+1017                 \textcolor{keywordflow}{case} 1:
+1018                     SDL\_BlitSurface(menu\_items[6], NULL, screen2, &screen\_pos);
+1019                     Mix\_PlayChannel(1, son, 0);
+1020                     SDL\_BlitSurface(menu\_items[0], NULL, screen2, &pos[0]);
+1021                     SDL\_BlitSurface(menu\_items[8], NULL, screen2, &pos[1]);
+1022                     SDL\_BlitSurface(menu\_items[2], NULL, screen2, &pos[2]);
+1023                     SDL\_BlitSurface(menu\_items[3], NULL, screen2, &pos[3]);
+1024                     SDL\_Flip(screen2);
+1025                     \textcolor{keywordflow}{break};
+1026                 \textcolor{keywordflow}{case} 2:
+1027                     SDL\_BlitSurface(menu\_items[6], NULL, screen2, &screen\_pos);
+1028                     Mix\_PlayChannel(1, son, 0);
+1029                     SDL\_BlitSurface(menu\_items[0], NULL, screen2, &pos[0]);
+1030                     SDL\_BlitSurface(menu\_items[1], NULL, screen2, &pos[1]);
+1031                     SDL\_BlitSurface(menu\_items[9], NULL, screen2, &pos[2]);
+1032                     SDL\_BlitSurface(menu\_items[3], NULL, screen2, &pos[3]);
+1033                     SDL\_Flip(screen2);
+1034                     \textcolor{keywordflow}{break};
+1035                 \textcolor{keywordflow}{case} 3:
+1036                     SDL\_BlitSurface(menu\_items[6], NULL, screen2, &screen\_pos);
+1037                     Mix\_PlayChannel(1, son, 0);
+1038                     SDL\_BlitSurface(menu\_items[0], NULL, screen2, &pos[0]);
+1039                     SDL\_BlitSurface(menu\_items[1], NULL, screen2, &pos[1]);
+1040                     SDL\_BlitSurface(menu\_items[2], NULL, screen2, &pos[2]);
+1041                     SDL\_BlitSurface(menu\_items[11], NULL, screen2, &pos[3]);
+1042                     SDL\_Flip(screen2);
+1043                     \textcolor{keywordflow}{break};
+1044                 \}
+1045             \}
+1046             \textcolor{keywordtype}{int} \textcolor{keywordtype}{bool} = -1;
+1047             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j = 0; j < 4; j++)
+1048             \{
+1049 
+1050                 \textcolor{keywordflow}{if} (x >= pos[j].x && x <= pos[j].x + pos[j].w && y >= pos[j].y && y <= pos[j].y + pos[j].h)
+1051                 \{
+1052                     \textcolor{keywordtype}{bool} = 1;
+1053                 \}
+1054             \}
+1055             \textcolor{keywordflow}{if} (\textcolor{keywordtype}{bool} == -1)
+1056             \{
+1057                 SDL\_BlitSurface(menu\_items[6], NULL, screen2, &screen\_pos);
+1058                 SDL\_BlitSurface(menu\_items[0], NULL, screen2, &pos[0]);
+1059                 SDL\_BlitSurface(menu\_items[1], NULL, screen2, &pos[1]);
+1060                 SDL\_BlitSurface(menu\_items[2], NULL, screen2, &pos[2]);
+1061                 SDL\_BlitSurface(menu\_items[3], NULL, screen2, &pos[3]);
+1062                 SDL\_Flip(screen2);
+1063             \}
+1064             \textcolor{keywordflow}{if} (i == 3)
+1065             \{
+1066                 i = -1;
+1067             \}
+1068             i++;
+1069             \textcolor{keywordflow}{break};
+1070         \}
+1071     \}
+1072 
+1073     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < 11; i++)
+1074         SDL\_FreeSurface(menu\_items[i]);
+1075 
+1076     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < 3; i++)
+1077         Mix\_FreeMusic(bckmusic[i]);
+1078 
+1079     Mix\_FreeChunk(son);
+1080     Mix\_CloseAudio();
+1081     SDL\_FreeSurface(screen2);
+1082     SDL\_Flip(screen2);
+1083     TTF\_Quit();
+1084     SDL\_Quit();
+1085 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{fonctions125_8c_a685ba5727bdf166024b6724e4d1db653}\label{fonctions125_8c_a685ba5727bdf166024b6724e4d1db653}} 
+\index{fonctions125.\+c@{fonctions125.\+c}!menu@{menu}}
+\index{menu@{menu}!fonctions125.\+c@{fonctions125.\+c}}
+\subsubsection{\texorpdfstring{menu()}{menu()}}
+{\footnotesize\ttfamily void menu (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+Surface $\ast$}]{screen }\end{DoxyParamCaption})}
+
+
+
+this function allows you to display main menu whit all the submenu 
+
+
+\begin{DoxyParams}{Parameters}
+{\em screen} & \\
+\hline
+\end{DoxyParams}
+load all the images we will use in main menu
+
+Definition at line 447 of file fonctions125.\+c.
+
+
+\begin{DoxyCode}
+448 \{
+449     \textcolor{keywordtype}{int} i = 0;
+450 
+451     SDL\_Init(SDL\_INIT\_VIDEO | SDL\_INIT\_AUDIO);
+452     TTF\_Init();
+453     \textcolor{comment}{// TTF\_CloseFont();}
+454 
+455     \textcolor{keywordflow}{if} (Mix\_OpenAudio(44100, MIX\_DEFAULT\_FORMAT, MIX\_DEFAULT\_CHANNELS, 1024) == -1)
+456     \{
+457         printf(\textcolor{stringliteral}{"%s"}, Mix\_GetError());
+458         printf(\textcolor{stringliteral}{"error\(\backslash\)n"});
+459     \}
+460     Mix\_Music *bckmusic[3];
+461 
+462     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i <= 3; i++)
+463         bckmusic[i] = NULL;
+464     bckmusic[0] = Mix\_LoadMUS(\textcolor{stringliteral}{"son/interstellar.mp3"});
+465     bckmusic[1] = Mix\_LoadMUS(\textcolor{stringliteral}{"son/bckSon.mp3"});
+466     bckmusic[2] = Mix\_LoadMUS(\textcolor{stringliteral}{"son/kafon.mp3"});
+467     Mix\_Chunk *son = NULL;
+468     son = Mix\_LoadWAV(\textcolor{stringliteral}{"son/bouton.wav"});
+469     Mix\_PlayMusic(bckmusic[0], -1);
+470 
+471     SDL\_Surface *menu\_items[12], *bg = NULL;
+472     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < 12; i++)
+473         menu\_items[i] = NULL;
+474 
+479     menu\_items[0] = IMG\_Load(\textcolor{stringliteral}{"fly12/new-game-1.png"});
+480     menu\_items[1] = IMG\_Load(\textcolor{stringliteral}{"fly12/setting-1.png"});
+481     menu\_items[2] = IMG\_Load(\textcolor{stringliteral}{"fly12/load-1.png"});
+482     menu\_items[3] = IMG\_Load(\textcolor{stringliteral}{"fly12/quit-1.png"});
+483     menu\_items[4] = IMG\_Load(\textcolor{stringliteral}{"fly12/multi-1.png"});
+484     menu\_items[5] = IMG\_Load(\textcolor{stringliteral}{"btn/nom.png"}); \textcolor{comment}{//fly12/background.png}
+485     menu\_items[6] = IMG\_Load(\textcolor{stringliteral}{"fly12/b3.jpg"});
+486     menu\_items[7] = IMG\_Load(\textcolor{stringliteral}{"fly12/new-game-2.png"});
+487     menu\_items[8] = IMG\_Load(\textcolor{stringliteral}{"fly12/settings-2.png"});
+488     menu\_items[9] = IMG\_Load(\textcolor{stringliteral}{"fly12/load-2.png"});
+489     menu\_items[10] = IMG\_Load(\textcolor{stringliteral}{"buttons/background.jpg"});
+490     menu\_items[11] = IMG\_Load(\textcolor{stringliteral}{"fly12/quit-2.png"});
+491     SDL\_Rect pos[5], screen\_pos, position;
+492 
+493     screen = SDL\_SetVideoMode(1285, 723, 32, SDL\_HWSURFACE | SDL\_RESIZABLE);
+494     \textcolor{keywordflow}{if} (Mix\_OpenAudio(44100, MIX\_DEFAULT\_FORMAT, MIX\_DEFAULT\_CHANNELS, 1024) == -1)
+495     \{
+496         printf(\textcolor{stringliteral}{"%s"}, Mix\_GetError());
+497         printf(\textcolor{stringliteral}{"error\(\backslash\)n"});
+498     \}
+499     SDL\_WM\_SetCaption(\textcolor{stringliteral}{"the best fly"}, NULL);
+500     bg = SDL\_LoadBMP(\textcolor{stringliteral}{"fly12/b2.bmp"});
+501     screen\_pos.x = 0;
+502     screen\_pos.y = 0;
+503     SDL\_BlitSurface(menu\_items[6], NULL, screen, &screen\_pos);
+504     SDL\_Flip(screen);
+505 
+506     \textcolor{comment}{//displaying start btn}
+507     pos[0].x = screen->clip\_rect.w / 2 - menu\_items[0]->clip\_rect.w / 2 + 350;
+508     pos[0].y = screen->clip\_rect.h / 2 - menu\_items[0]->clip\_rect.h / 2 - 30;
+509     SDL\_BlitSurface(menu\_items[0], NULL, screen, &pos[0]);
+510     SDL\_Flip(screen);
+511 
+512     \textcolor{comment}{//displaying  settings btn}
+513     pos[1].x = screen->clip\_rect.w / 2 - menu\_items[1]->clip\_rect.w / 2 + 400;
+514     pos[1].y = screen->clip\_rect.h / 2 - menu\_items[1]->clip\_rect.h / 2 + 60;
+515     SDL\_BlitSurface(menu\_items[1], NULL, screen, &pos[1]);
+516     SDL\_Flip(screen);
+517 
+518     \textcolor{comment}{//displaying about btn}
+519     pos[2].x = screen->clip\_rect.w / 2 - menu\_items[2]->clip\_rect.w / 2 + 450;
+520     pos[2].y = screen->clip\_rect.h / 2 - menu\_items[2]->clip\_rect.h / 2 + 150;
+521 
+522     SDL\_BlitSurface(menu\_items[2], NULL, screen, &pos[2]);
+523     SDL\_Flip(screen);
+524 
+525     \textcolor{comment}{//displaying quit btn}
+526     pos[3].x = screen->clip\_rect.w / 2 - menu\_items[3]->clip\_rect.w / 2 + 500;
+527     pos[3].y = screen->clip\_rect.h / 2 - menu\_items[3]->clip\_rect.h / 2 + 240;
+528     SDL\_BlitSurface(menu\_items[3], NULL, screen, &pos[3]);
+529     SDL\_Flip(screen);
+530 
+531     SDL\_Flip(screen);
+532 
+533     \textcolor{keywordtype}{int} continuer = 1;
+534     SDL\_Event event;
+535     Mix\_PlayMusic(bckmusic[0], -1);
+536     \textcolor{keywordtype}{int} x, y, count1 = -1, count2 = 3;
+537     SDL\_Surface settings, stage1, about\_submenu;
+538 
+539     \textcolor{keywordflow}{while} (continuer)
+540     \{
+541         SDL\_WaitEvent(&event);
+542 
+543         \textcolor{keywordflow}{switch} (event.type)
+544         \{
+545         \textcolor{keywordflow}{case} SDL\_QUIT:
+546             continuer = 0;
+547             \textcolor{keywordflow}{break};
+548         \textcolor{keywordflow}{case} SDL\_KEYDOWN:
+549             SDL\_EnableKeyRepeat(1000, 1000);
+550             \textcolor{keywordflow}{switch} (event.key.keysym.sym)
+551             \{
+552             \textcolor{keywordflow}{case} SDLK\_ESCAPE:
+553                 continuer = 0;
+554                 \textcolor{keywordflow}{break};
+555             \textcolor{keywordflow}{case} SDLK\_f:
+556                 SDL\_WM\_ToggleFullScreen(screen);
+557                 \textcolor{keywordflow}{break};
+558             \textcolor{keywordflow}{case} SDLK\_DOWN:
+559                 count1++;
+560                 \textcolor{keywordflow}{if} (count1 > 3)
+561                 \{
+562                     count1 = -1;
+563                 \}
+564                 \textcolor{keywordflow}{switch} (count1)
+565                 \{
+566                 \textcolor{keywordflow}{case} 0:
+567                     SDL\_BlitSurface(menu\_items[6], NULL, screen, &screen\_pos);
+568                     Mix\_PlayChannel(1, son, 0);
+569                     SDL\_BlitSurface(menu\_items[7], NULL, screen, &pos[0]);
+570                     SDL\_BlitSurface(menu\_items[1], NULL, screen, &pos[1]);
+571                     SDL\_BlitSurface(menu\_items[2], NULL, screen, &pos[2]);
+572                     SDL\_BlitSurface(menu\_items[3], NULL, screen, &pos[3]);
+573                     SDL\_Flip(screen);
+574                     \textcolor{keywordflow}{break};
+575                 \textcolor{keywordflow}{case} 1:
+576                     SDL\_BlitSurface(menu\_items[6], NULL, screen, &screen\_pos);
+577                     Mix\_PlayChannel(1, son, 0);
+578                     SDL\_BlitSurface(menu\_items[0], NULL, screen, &pos[0]);
+579                     SDL\_BlitSurface(menu\_items[8], NULL, screen, &pos[1]);
+580                     SDL\_BlitSurface(menu\_items[2], NULL, screen, &pos[2]);
+581                     SDL\_BlitSurface(menu\_items[3], NULL, screen, &pos[3]);
+582                     SDL\_Flip(screen);
+583                     \textcolor{keywordflow}{break};
+584                 \textcolor{keywordflow}{case} 2:
+585                     SDL\_BlitSurface(menu\_items[6], NULL, screen, &screen\_pos);
+586                     Mix\_PlayChannel(1, son, 0);
+587                     SDL\_BlitSurface(menu\_items[0], NULL, screen, &pos[0]);
+588                     SDL\_BlitSurface(menu\_items[1], NULL, screen, &pos[1]);
+589                     SDL\_BlitSurface(menu\_items[9], NULL, screen, &pos[2]);
+590                     SDL\_BlitSurface(menu\_items[3], NULL, screen, &pos[3]);
+591                     SDL\_Flip(screen);
+592                     \textcolor{keywordflow}{break};
+593                 \textcolor{keywordflow}{case} 3:
+594                     SDL\_BlitSurface(menu\_items[6], NULL, screen, &screen\_pos);
+595                     Mix\_PlayChannel(1, son, 0);
+596                     SDL\_BlitSurface(menu\_items[0], NULL, screen, &pos[0]);
+597                     SDL\_BlitSurface(menu\_items[1], NULL, screen, &pos[1]);
+598                     SDL\_BlitSurface(menu\_items[2], NULL, screen, &pos[2]);
+599                     SDL\_BlitSurface(menu\_items[11], NULL, screen, &pos[3]);
+600                     SDL\_Flip(screen);
+601                     \textcolor{keywordflow}{break};
+602                 \}
+603                 \textcolor{keywordflow}{break};
+604             \textcolor{keywordflow}{case} SDLK\_UP:
+605                 count1--;
+606                 \textcolor{keywordflow}{switch} (count1)
+607                 \{
+608                 \textcolor{keywordflow}{case} -1:
+609                     SDL\_BlitSurface(menu\_items[6], NULL, screen, &screen\_pos);
+610                     Mix\_PlayChannel(1, son, 0);
+611                     SDL\_BlitSurface(menu\_items[7], NULL, screen, &pos[0]);
+612                     SDL\_BlitSurface(menu\_items[1], NULL, screen, &pos[1]);
+613                     SDL\_BlitSurface(menu\_items[2], NULL, screen, &pos[2]);
+614                     SDL\_BlitSurface(menu\_items[3], NULL, screen, &pos[3]);
+615                     SDL\_Flip(screen);
+616                     \textcolor{keywordflow}{break};
+617                 \textcolor{keywordflow}{case} 1:
+618                     SDL\_BlitSurface(menu\_items[6], NULL, screen, &screen\_pos);
+619                     Mix\_PlayChannel(1, son, 0);
+620                     SDL\_BlitSurface(menu\_items[0], NULL, screen, &pos[0]);
+621                     SDL\_BlitSurface(menu\_items[8], NULL, screen, &pos[1]);
+622                     SDL\_BlitSurface(menu\_items[2], NULL, screen, &pos[2]);
+623                     SDL\_BlitSurface(menu\_items[3], NULL, screen, &pos[3]);
+624                     SDL\_Flip(screen);
+625                     \textcolor{keywordflow}{break};
+626                 \textcolor{keywordflow}{case} 2:
+627                     SDL\_BlitSurface(menu\_items[6], NULL, screen, &screen\_pos);
+628                     Mix\_PlayChannel(1, son, 0);
+629                     SDL\_BlitSurface(menu\_items[0], NULL, screen, &pos[0]);
+630                     SDL\_BlitSurface(menu\_items[1], NULL, screen, &pos[1]);
+631                     SDL\_BlitSurface(menu\_items[9], NULL, screen, &pos[2]);
+632                     SDL\_BlitSurface(menu\_items[3], NULL, screen, &pos[3]);
+633                     SDL\_Flip(screen);
+634                     \textcolor{keywordflow}{break};
+635                 \textcolor{keywordflow}{case} 3:
+636                     SDL\_BlitSurface(menu\_items[6], NULL, screen, &screen\_pos);
+637                     Mix\_PlayChannel(1, son, 0);
+638                     SDL\_BlitSurface(menu\_items[0], NULL, screen, &pos[0]);
+639                     SDL\_BlitSurface(menu\_items[1], NULL, screen, &pos[1]);
+640                     SDL\_BlitSurface(menu\_items[2], NULL, screen, &pos[2]);
+641                     SDL\_BlitSurface(menu\_items[11], NULL, screen, &pos[3]);
+642                     SDL\_Flip(screen);
+643                     \textcolor{keywordflow}{break};
+644                 \}
+645                 \textcolor{keywordflow}{break};
+646             \}
+647             \textcolor{keywordflow}{break};
+648         \textcolor{keywordflow}{case} SDL\_MOUSEBUTTONDOWN:
+649             x = \textcolor{keyword}{event}.motion.x;
+650             y = \textcolor{keyword}{event}.motion.y;
+651             \textcolor{keywordflow}{if} (event.button.button == SDL\_BUTTON\_LEFT)
+652             \{
+653                 \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < 4; i++)
+654                 \{
+655                     \textcolor{keywordflow}{if} (x >= pos[i].x && x <= pos[i].x + pos[i].w && y >= pos[i].y && y <= pos[i].y + pos[i
+      ].h)
+656                     \{
+657                         \textcolor{keywordflow}{switch} (i)
+658                         \{
+659                         \textcolor{keywordflow}{case} 0:
+660                             \textcolor{comment}{//main\_menu(&stage1);}
+661                             \hyperlink{fonctions125_8c_a0a3c7e79c0c65e5c1d33b3fdf422d6a7}{first\_stage}(&stage1);
+662                             \textcolor{keywordflow}{break};
+663                         \textcolor{keywordflow}{case} 1:
+664                             \hyperlink{fonctions125_8c_a7e21caa262c8ebcbc43892edbb54a3e7}{display\_settings}(&settings);
+665                             \textcolor{keywordflow}{break};
+666                         \textcolor{keywordflow}{case} 2:
+667                             \hyperlink{fonctions125_8c_ad4af8647a3cc3d41644a42f3ad20f3ca}{display\_about}(&about\_submenu);
+668                             \textcolor{keywordflow}{break};
+669                         \textcolor{keywordflow}{case} 3:
+670                             continuer = 0;
+671                             \textcolor{keywordflow}{break};
+672                         \}
+673                     \}
+674                 \}
+675             \}
+676             \textcolor{keywordflow}{break};
+677         \textcolor{keywordflow}{case} SDL\_MOUSEMOTION:
+678             x = \textcolor{keyword}{event}.motion.x;
+679             y = \textcolor{keyword}{event}.motion.y;
+680             \textcolor{keywordflow}{if} (x >= pos[i].x && x <= pos[i].x + pos[i].w && y >= pos[i].y && y <= pos[i].y + pos[i].h)
+681             \{
+682                 \textcolor{keywordflow}{switch} (i)
+683                 \{
+684                 \textcolor{keywordflow}{case} 0:
+685                     SDL\_BlitSurface(menu\_items[6], NULL, screen, &screen\_pos);
+686                     Mix\_PlayChannel(1, son, 0);
+687                     SDL\_BlitSurface(menu\_items[7], NULL, screen, &pos[0]);
+688                     SDL\_BlitSurface(menu\_items[1], NULL, screen, &pos[1]);
+689                     SDL\_BlitSurface(menu\_items[2], NULL, screen, &pos[2]);
+690                     SDL\_BlitSurface(menu\_items[3], NULL, screen, &pos[3]);
+691                     SDL\_Flip(screen);
+692                     \textcolor{keywordflow}{break};
+693 
+694                 \textcolor{keywordflow}{case} 1:
+695                     SDL\_BlitSurface(menu\_items[6], NULL, screen, &screen\_pos);
+696                     Mix\_PlayChannel(1, son, 0);
+697                     SDL\_BlitSurface(menu\_items[0], NULL, screen, &pos[0]);
+698                     SDL\_BlitSurface(menu\_items[8], NULL, screen, &pos[1]);
+699                     SDL\_BlitSurface(menu\_items[2], NULL, screen, &pos[2]);
+700                     SDL\_BlitSurface(menu\_items[3], NULL, screen, &pos[3]);
+701                     SDL\_Flip(screen);
+702                     \textcolor{keywordflow}{break};
+703                 \textcolor{keywordflow}{case} 2:
+704                     SDL\_BlitSurface(menu\_items[6], NULL, screen, &screen\_pos);
+705                     Mix\_PlayChannel(1, son, 0);
+706                     SDL\_BlitSurface(menu\_items[0], NULL, screen, &pos[0]);
+707                     SDL\_BlitSurface(menu\_items[1], NULL, screen, &pos[1]);
+708                     SDL\_BlitSurface(menu\_items[9], NULL, screen, &pos[2]);
+709                     SDL\_BlitSurface(menu\_items[3], NULL, screen, &pos[3]);
+710                     SDL\_Flip(screen);
+711                     \textcolor{keywordflow}{break};
+712                 \textcolor{keywordflow}{case} 3:
+713                     SDL\_BlitSurface(menu\_items[6], NULL, screen, &screen\_pos);
+714                     Mix\_PlayChannel(1, son, 0);
+715                     SDL\_BlitSurface(menu\_items[0], NULL, screen, &pos[0]);
+716                     SDL\_BlitSurface(menu\_items[1], NULL, screen, &pos[1]);
+717                     SDL\_BlitSurface(menu\_items[2], NULL, screen, &pos[2]);
+718                     SDL\_BlitSurface(menu\_items[11], NULL, screen, &pos[3]);
+719                     SDL\_Flip(screen);
+720                     \textcolor{keywordflow}{break};
+721                 \}
+722             \}
+723             \textcolor{keywordtype}{int} \textcolor{keywordtype}{bool} = -1;
+724             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j = 0; j < 4; j++)
+725             \{
+726 
+727                 \textcolor{keywordflow}{if} (x >= pos[j].x && x <= pos[j].x + pos[j].w && y >= pos[j].y && y <= pos[j].y + pos[j].h)
+728                 \{
+729                     \textcolor{keywordtype}{bool} = 1;
+730                 \}
+731             \}
+732             \textcolor{keywordflow}{if} (\textcolor{keywordtype}{bool} == -1)
+733             \{
+734                 SDL\_BlitSurface(menu\_items[6], NULL, screen, &screen\_pos);
+735                 SDL\_BlitSurface(menu\_items[0], NULL, screen, &pos[0]);
+736                 SDL\_BlitSurface(menu\_items[1], NULL, screen, &pos[1]);
+737                 SDL\_BlitSurface(menu\_items[2], NULL, screen, &pos[2]);
+738                 SDL\_BlitSurface(menu\_items[3], NULL, screen, &pos[3]);
+739                 SDL\_Flip(screen);
+740             \}
+741             \textcolor{keywordflow}{if} (i == 3)
+742             \{
+743                 i = -1;
+744             \}
+745             i++;
+746             \textcolor{keywordflow}{break};
+747         \}
+748     \}
+749     Mix\_PlayMusic(bckmusic[0], -1);
+750 
+751     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < 11; i++)
+752         SDL\_FreeSurface(menu\_items[i]);
+753 
+754     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < 3; i++)
+755         Mix\_FreeMusic(bckmusic[i]);
+756     Mix\_FreeChunk(son);
+757     Mix\_CloseAudio();
+758     SDL\_FreeSurface(screen);
+759     SDL\_Flip(screen);
+760     TTF\_Quit();
+761     SDL\_Quit();
+762 \}
+\end{DoxyCode}
